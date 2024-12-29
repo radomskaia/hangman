@@ -5,24 +5,34 @@
   align-items: center;
   justify-content: center;
 
-  padding: 20px;
-
   font-family: inherit;
   color: inherit;
-
-  background-color: var(--primary);
-  border-radius: var(--border-radius);
 
   transition: all 0.2s ease-in-out;
 }
 
-.button:disabled {
+.button-keyboard {
+  width: 60px;
+  height: 60px;
+
+  background-color: var(--primary);
+  border: solid 1px var(--primary);
+  border-radius: var(--border-radius);
+}
+
+.button-keyboard:disabled {
   cursor: auto;
   background-color: var(--primary-alpha);
 }
 
 @media (hover: hover) {
-  .button:hover {
+  .button-keyboard:hover {
     background-color: var(--primary-alpha);
   }
+}
+
+.button-keyboard:active,
+.button-keyboard-active {
+  transform: translateY(4px);
+  background-color: var(--dark);
 }

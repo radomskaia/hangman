@@ -8,8 +8,8 @@
   display: flex;
 }
 
-.width-30 {
-  max-width: 30%;
+.width-40 {
+  max-width: 40%;
 }
 
 .flex--column {
@@ -34,16 +34,16 @@
   justify-content: center;
 }
 
-.flex_gap-30 {
+.flex_gap-48 {
   gap: 48px;
 }
 
 .flex_gap-20 {
-  gap: 32px;
+  gap: 20px;
 }
 
 .flex_gap-10 {
-  gap: 16px;
+  gap: 10px;
 }
 
 .display-none {
