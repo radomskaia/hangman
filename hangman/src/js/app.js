@@ -9,5 +9,6 @@ export function app() {
     wordWrapper: elements.wordWrapper,
     hint: elements.hint,
   });
-  keyboard(elements.keyboardWrapper, word, wordLetters, elements.image);
+  elements.wordLetters = wordLetters;
+  keyboard(elements, word, wordLetters);
 }

@@ -1,4 +1,5 @@
 import { createDOMElement, DELAY_TIME } from './utils.js';
+import { guessLetter } from './guessLetter.js';
 
 const RUSSIAN_LAYOUT = { firstChar: 'а', lastChar: 'я' };
 const ENGLISH_LAYOUT = {
@@ -8,7 +9,7 @@ const ENGLISH_LAYOUT = {
 
 const keyboardKeys = {};
 
-function renderKey(charCode, keyboardWrapper) {
+function renderKey(charCode, elements, word) {
   const char = String.fromCharCode(charCode);
   const key = createDOMElement({
     tagName: 'button',
@@ -21,27 +22,29 @@ function renderKey(charCode, keyboardWrapper) {
     textContent: char,
   });
   key.append(keyText);
-  keyboardWrapper.append(key);
+  elements.keyboardWrapper.append(key);
   keyboardKeys[char] = key;
   key.addEventListener('click', () => {
+    if (key.disabled) {
+      return;
+    }
     key.classList.add('button-keyboard-active');
     setTimeout(() => {
       key.classList.remove('button-keyboard-active');
+      guessLetter(word, elements, char, key);
     }, DELAY_TIME);
-    console.log('char', char);
   });
   return key;
 }
 
-export function keyboard(keyboardWrapper) {
+export function keyboard(elements, word, wordLetters) {
   for (
     let i = ENGLISH_LAYOUT.firstCharCode;
     i <= ENGLISH_LAYOUT.lastCharCode;
     i++
   ) {
-    renderKey(i, keyboardWrapper);
+    renderKey(i, elements, word);
   }
-
   window.addEventListener('keydown', (event) => {
     const key = event.key.toLowerCase();
     if (key >= RUSSIAN_LAYOUT.firstChar && key <= RUSSIAN_LAYOUT.lastChar) {
