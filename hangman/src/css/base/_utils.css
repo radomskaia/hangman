@@ -1,0 +1,39 @@
+.container {
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: 60px;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex--column {
+  flex-direction: column;
+}
+
+.flex--align-center {
+  align-items: center;
+}
+
+.flex--align-justify-center {
+  align-items: center;
+  justify-content: center;
+}
+
+.flex--wrap {
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.flex_gap-20 {
+  gap: 20px;
+}
+
+.flex_gap-8 {
+  gap: 10px;
+}
+
+.display-none {
+  display: none;
+}

@@ -1,0 +1,28 @@
+.button {
+  cursor: pointer;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 20px;
+
+  font-family: inherit;
+  color: inherit;
+
+  background-color: var(--primary);
+  border-radius: var(--border-radius);
+
+  transition: all 0.2s ease-in-out;
+}
+
+.button:disabled {
+  cursor: auto;
+  background-color: var(--primary-alpha);
+}
+
+@media (hover: hover) {
+  .button:hover {
+    background-color: var(--primary-alpha);
+  }
+}

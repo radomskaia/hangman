@@ -1,3 +1,10 @@
+@import "css/base/_variables.css";
+@import "css/base/_typography.css";
+@import "css/base/_utils.css";
+@import "css/_button.css";
+@import "css/_modal.css";
+@import "css/_media-queries.css";
+
 /* base */
 *,
 *::before,

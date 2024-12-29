@@ -1,0 +1,24 @@
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: Montserrat, sans-serif;
+  font-size: 1.6rem;
+  color: var(--dark);
+}
+
+.header-primary,
+.keyboard-text {
+  font-size: 3.2rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.counter-text {
+  color: var(--static-red);
+}
+
+.keyboard-text {
+  color: var(--static-white);
+}
