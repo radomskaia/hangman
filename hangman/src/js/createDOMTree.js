@@ -3,7 +3,7 @@ import { createDOMElement } from './utils.js';
 export function createDOMTree() {
   const elements = {};
   elements.container = createDOMElement({
-    classList: ['container', 'flex', 'flex_gap-30'],
+    classList: ['container', 'flex', 'flex_gap-48'],
   });
   document.body.appendChild(elements.container);
   elements.wrapperLeft = createDOMElement({
@@ -35,7 +35,10 @@ export function createDOMTree() {
     classList: ['header-primary'],
   });
   elements.wrapperLeft.append(elements.imageWrapper, elements.headerPrimary);
-  elements.wordWrapper = createDOMElement({});
+  elements.wordWrapper = createDOMElement({
+    tagName: 'ul',
+    classList: ['flex', 'flex_gap-10'],
+  });
   elements.hintWrapper = createDOMElement({
     tagName: 'p',
     textContent: 'Hint: ',

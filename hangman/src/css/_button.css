@@ -22,13 +22,16 @@
 
 .button-keyboard:disabled {
   cursor: auto;
-  background-color: var(--primary-alpha);
+  background-color: var(--dark);
 }
 
 @media (hover: hover) {
   .button-keyboard:hover {
     background-color: var(--primary-alpha);
   }
+  .button-keyboard:disabled:hover {
+  background-color: var(--dark);
+}
 }
 
 .button-keyboard:active,
