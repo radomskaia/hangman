@@ -8,6 +8,10 @@
   display: flex;
 }
 
+.width-30 {
+  max-width: 30%;
+}
+
 .flex--column {
   flex-direction: column;
 }
@@ -21,19 +25,32 @@
   justify-content: center;
 }
 
+.flex--justify-between {
+  justify-content: space-between;
+}
+
 .flex--wrap {
   flex-wrap: wrap;
   justify-content: center;
 }
 
-.flex_gap-20 {
-  gap: 20px;
+.flex_gap-30 {
+  gap: 48px;
 }
 
-.flex_gap-8 {
-  gap: 10px;
+.flex_gap-20 {
+  gap: 32px;
+}
+
+.flex_gap-10 {
+  gap: 16px;
 }
 
 .display-none {
   display: none;
+}
+
+.image {
+  width: 100%;
+  object-fit: contain;
 }

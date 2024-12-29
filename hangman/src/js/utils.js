@@ -5,12 +5,14 @@ const DELAY_TIME = 150;
 
 export function createDOMElement({
   tagName = 'div',
-  classList = '',
+  classList = '' || [],
   textContent = '',
   attributes = {},
 } = {}) {
   const element = document.createElement(tagName);
-  if (classList.trim()) {
+  if (Array.isArray(classList)) {
+    element.classList.add(...classList);
+  } else if (classList.trim()) {
     element.classList.add(...classList.split(' '));
   }
   if (textContent) {
