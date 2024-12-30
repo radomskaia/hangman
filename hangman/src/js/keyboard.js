@@ -1,26 +1,28 @@
 import { createDOMElement, DELAY_TIME } from './utils.js';
 import { gameLogic } from './gameLogic.js';
+import { gameState } from './startGame.js';
 
 const RUSSIAN_LAYOUT = { firstChar: 'а', lastChar: 'я' };
 const ENGLISH_LAYOUT = {
-  firstCharCode: 'a'.charCodeAt(),
-  lastCharCode: 'z'.charCodeAt(),
+  firstCharCode: 'a'.charCodeAt(0),
+  lastCharCode: 'z'.charCodeAt(0),
 };
 
-const keyboardKeys = {};
-
-function clickHandler(key, word, elements, char) {
+function clickHandler(key, elements, char) {
   if (key.disabled) {
     return;
   }
   key.classList.add('button-keyboard-active');
   setTimeout(() => {
     key.classList.remove('button-keyboard-active');
-    gameLogic(word, elements, char, key);
+    gameLogic(elements, char, key);
   }, DELAY_TIME);
 }
 
-function keydownHandler(event) {
+function keydownHandler(event, keyboardKeys) {
+  if (gameState.isEnd) {
+    return;
+  }
   const key = event.key.toLowerCase();
   if (key >= RUSSIAN_LAYOUT.firstChar && key <= RUSSIAN_LAYOUT.lastChar) {
     console.log('Change the keyboard layout, please');
@@ -33,7 +35,7 @@ function keydownHandler(event) {
   keyboardKeys[key].dispatchEvent(newEvent);
 }
 
-function renderKey(charCode, elements, word) {
+function renderKey(charCode, elements) {
   const char = String.fromCharCode(charCode);
   const key = createDOMElement({
     tagName: 'button',
@@ -41,25 +43,29 @@ function renderKey(charCode, elements, word) {
   });
   const keyText = createDOMElement({
     tagName: 'p',
-    classList: 'keyboard-text',
+    classList: ['keyboard-text'],
     textContent: char,
   });
   key.append(keyText);
   elements.keyboardWrapper.append(key);
-  keyboardKeys[char] = key;
+  elements.keyboardKeys[char] = key;
   key.addEventListener('click', () => {
-    clickHandler(key, word, elements, char);
+    clickHandler(key, elements, char);
   });
   return key;
 }
 
-export function keyboard(elements, word) {
+export function keyboard(elements) {
+  elements.keyboardKeys = {};
   for (
     let i = ENGLISH_LAYOUT.firstCharCode;
     i <= ENGLISH_LAYOUT.lastCharCode;
     i++
   ) {
-    renderKey(i, elements, word);
+    renderKey(i, elements);
   }
-  window.addEventListener('keydown', keydownHandler);
+  delete elements.keyboardWrapper;
+  window.addEventListener('keydown', (event) => {
+    keydownHandler(event, elements.keyboardKeys);
+  });
 }

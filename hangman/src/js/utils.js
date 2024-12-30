@@ -5,7 +5,7 @@ export const DELAY_TIME = 300;
 
 export function createDOMElement({
   tagName = 'div',
-  classList = '' || [],
+  classList = [],
   textContent = '',
   attributes = {},
 } = {}) {
@@ -25,12 +25,4 @@ export function createDOMElement({
   }
 
   return element;
-}
-
-export function debounce(callback, delay = DELAY_TIME) {
-  let timeoutID;
-  return function (...args) {
-    clearTimeout(timeoutID);
-    timeoutID = setTimeout(() => callback(...args), delay);
-  };
 }

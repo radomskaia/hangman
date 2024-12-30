@@ -1,4 +1,5 @@
 import { createDOMElement } from './utils.js';
+import { resetGame } from './resetGame.js';
 
 export function createDOMTree() {
   const elements = {};
@@ -23,7 +24,7 @@ export function createDOMTree() {
     tagName: 'img',
     classList: ['image'],
     attributes: {
-      alt: 'empty gallows',
+      alt: 'gallows',
       src: './src/images/empty-gallows.png',
     },
   });
@@ -105,7 +106,8 @@ export function createDOMTree() {
     elements.modalButton,
   );
   document.body.append(elements.container, elements.modal);
-  return {
+
+  const usedElements = {
     image: elements.image,
     hint: elements.hint,
     wordWrapper: elements.wordWrapper,
@@ -113,9 +115,15 @@ export function createDOMTree() {
     guessesCounter: elements.guessesCounter,
     modal: {
       modal: elements.modal,
-      button: elements.modalButton,
       text: elements.modalText,
       word: elements.secretWord,
     },
   };
+
+  elements.modalButton.addEventListener('click', () => {
+    resetGame(usedElements);
+    usedElements.modal.modal.close();
+  });
+
+  return usedElements;
 }
