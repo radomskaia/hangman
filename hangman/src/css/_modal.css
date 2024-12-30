@@ -1,11 +1,9 @@
-
 .modal {
   border-radius: var(--border-radius);
   background: var(--content-background);
   transition: all 0.2s ease-in-out;
   opacity: 0;
   border: none;
-  /* z-index: 999; */
   max-width: 400px;
   padding: 30px;
 }

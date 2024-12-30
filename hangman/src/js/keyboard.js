@@ -1,5 +1,5 @@
 import { createDOMElement, DELAY_TIME } from './utils.js';
-import { guessLetter } from './guessLetter.js';
+import { gameLogic } from './gameLogic.js';
 
 const RUSSIAN_LAYOUT = { firstChar: 'а', lastChar: 'я' };
 const ENGLISH_LAYOUT = {
@@ -9,12 +9,35 @@ const ENGLISH_LAYOUT = {
 
 const keyboardKeys = {};
 
+function clickHandler(key, word, elements, char) {
+  if (key.disabled) {
+    return;
+  }
+  key.classList.add('button-keyboard-active');
+  setTimeout(() => {
+    key.classList.remove('button-keyboard-active');
+    gameLogic(word, elements, char, key);
+  }, DELAY_TIME);
+}
+
+function keydownHandler(event) {
+  const key = event.key.toLowerCase();
+  if (key >= RUSSIAN_LAYOUT.firstChar && key <= RUSSIAN_LAYOUT.lastChar) {
+    console.log('Change the keyboard layout, please');
+    return;
+  }
+  if (!keyboardKeys[key]) {
+    return;
+  }
+  const newEvent = new MouseEvent('click');
+  keyboardKeys[key].dispatchEvent(newEvent);
+}
+
 function renderKey(charCode, elements, word) {
   const char = String.fromCharCode(charCode);
   const key = createDOMElement({
     tagName: 'button',
     classList: ['button', 'button-keyboard'],
-    //attributes: { 'data-char': char },
   });
   const keyText = createDOMElement({
     tagName: 'p',
@@ -25,19 +48,12 @@ function renderKey(charCode, elements, word) {
   elements.keyboardWrapper.append(key);
   keyboardKeys[char] = key;
   key.addEventListener('click', () => {
-    if (key.disabled) {
-      return;
-    }
-    key.classList.add('button-keyboard-active');
-    setTimeout(() => {
-      key.classList.remove('button-keyboard-active');
-      guessLetter(word, elements, char, key);
-    }, DELAY_TIME);
+    clickHandler(key, word, elements, char);
   });
   return key;
 }
 
-export function keyboard(elements, word, wordLetters) {
+export function keyboard(elements, word) {
   for (
     let i = ENGLISH_LAYOUT.firstCharCode;
     i <= ENGLISH_LAYOUT.lastCharCode;
@@ -45,16 +61,5 @@ export function keyboard(elements, word, wordLetters) {
   ) {
     renderKey(i, elements, word);
   }
-  window.addEventListener('keydown', (event) => {
-    const key = event.key.toLowerCase();
-    if (key >= RUSSIAN_LAYOUT.firstChar && key <= RUSSIAN_LAYOUT.lastChar) {
-      console.log('Change the keyboard layout, please');
-      return;
-    }
-    if (!keyboardKeys[key]) {
-      return;
-    }
-    const newEvent = new MouseEvent('click');
-    keyboardKeys[key].dispatchEvent(newEvent);
-  });
+  window.addEventListener('keydown', keydownHandler);
 }

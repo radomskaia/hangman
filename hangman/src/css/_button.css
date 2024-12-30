@@ -8,11 +8,11 @@
   font-family: inherit;
   color: inherit;
 
-  transition: all 0.2s ease-in-out;
-
-    background-color: var(--primary);
+  background-color: var(--primary);
   border: solid 1px var(--primary);
   border-radius: var(--border-radius);
+
+  transition: all 0.2s ease-in-out;
 }
 
 .button-keyboard {
@@ -20,10 +20,10 @@
   height: 60px;
 }
 
-.modal-button{
+.modal-button {
   padding: 10px;
-  color: var(--static-white);
   font-weight: bold;
+  color: var(--static-white);
 }
 
 .button-keyboard:disabled {
@@ -35,9 +35,10 @@
   .button-keyboard:hover {
     background-color: var(--primary-alpha);
   }
+
   .button-keyboard:disabled:hover {
-  background-color: var(--dark);
-}
+    background-color: var(--dark);
+  }
 }
 
 .button-keyboard:active,

@@ -10,5 +10,5 @@ export function app() {
     hint: elements.hint,
   });
   elements.wordLetters = wordLetters;
-  keyboard(elements, word, wordLetters);
+  keyboard(elements, word);
 }

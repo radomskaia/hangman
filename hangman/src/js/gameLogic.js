@@ -28,7 +28,7 @@ function checkGameOver(wordLength, modal, word) {
   modal.modal.showModal();
 }
 
-export function guessLetter(word, elements, char, charButton) {
+export function gameLogic(word, elements, char, charButton) {
   const indexes = findAllIndexes(word, char);
   if (!indexes) {
     updateCounter(elements.guessesCounter, elements.image);

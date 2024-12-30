@@ -22,6 +22,6 @@ export function thinkWord(elements) {
   word.forEach((_, index) => {
     elements.wordWrapper.append(renderLetter(index));
   });
-  console.log(word);
+  console.log('secret word:', word.join(''));
   return [word, wordLetters];
 }
