@@ -1,16 +1,21 @@
 .modal {
-  border-radius: var(--border-radius);
-  background: var(--content-background);
-  transition: all 0.2s ease-in-out;
-  opacity: 0;
-  border: none;
+  pointer-events: none;
+
   max-width: 400px;
   padding: 30px;
+
+  visibility: hidden;
+  opacity: 0;
+  background: var(--content-background);
+  border: none;
+  border-radius: var(--border-radius);
+
+  transition: all 0.2s ease-in-out;
 }
 
 .modal::backdrop {
-  background: var(--overlay);
   padding: 8px;
+  background: var(--overlay);
   transition: all 0.3s ease-in-out;
 }
 
@@ -22,6 +27,8 @@
 }
 
 .modal[open] {
+  pointer-events: auto;
+  visibility: visible;
   opacity: 1;
 }
 

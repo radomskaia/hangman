@@ -10,9 +10,8 @@ export function createDOMTree() {
     classList: [
       'flex',
       'flex--column',
-      'width-30',
       'flex_gap-20',
-      'flex--align-center',
+      'flex--align-justify-center',
     ],
   });
   elements.wrapperRight = createDOMElement({
