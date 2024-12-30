@@ -9,15 +9,21 @@
   color: inherit;
 
   transition: all 0.2s ease-in-out;
+
+    background-color: var(--primary);
+  border: solid 1px var(--primary);
+  border-radius: var(--border-radius);
 }
 
 .button-keyboard {
   width: 60px;
   height: 60px;
+}
 
-  background-color: var(--primary);
-  border: solid 1px var(--primary);
-  border-radius: var(--border-radius);
+.modal-button{
+  padding: 10px;
+  color: var(--static-white);
+  font-weight: bold;
 }
 
 .button-keyboard:disabled {
@@ -38,4 +44,8 @@
 .button-keyboard-active {
   transform: translateY(4px);
   background-color: var(--dark);
+}
+
+.button-keyboard:disabled:active {
+  transform: translateY(0);
 }

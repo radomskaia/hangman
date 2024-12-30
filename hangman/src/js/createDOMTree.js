@@ -5,7 +5,6 @@ export function createDOMTree() {
   elements.container = createDOMElement({
     classList: ['container', 'flex', 'flex_gap-48'],
   });
-  document.body.appendChild(elements.container);
   elements.wrapperLeft = createDOMElement({
     classList: [
       'flex',
@@ -45,7 +44,6 @@ export function createDOMTree() {
   });
   elements.hint = createDOMElement({
     tagName: 'strong',
-    classList: ['hintText'],
   });
   elements.hintWrapper.append(elements.hint);
   elements.incorrectWrapper = createDOMElement({
@@ -75,11 +73,49 @@ export function createDOMTree() {
     elements.incorrectWrapper,
     elements.keyboardWrapper,
   );
+  elements.modal = createDOMElement({
+    tagName: 'dialog',
+    classList: [
+      'modal',
+      'flex',
+      'flex--column',
+      'flex--align-center',
+      'flex_gap-20',
+    ],
+  });
+  elements.modalButton = createDOMElement({
+    tagName: 'button',
+    classList: ['button', 'modal-button'],
+    textContent: 'Play again',
+  });
+  elements.modalText = createDOMElement({
+    tagName: 'p',
+  });
+  elements.modalText2 = createDOMElement({
+    tagName: 'p',
+    textContent: 'Secret word: ',
+  });
+  elements.secretWord = createDOMElement({
+    tagName: 'strong',
+  });
+  elements.modalText2.append(elements.secretWord);
+  elements.modal.append(
+    elements.modalText,
+    elements.modalText2,
+    elements.modalButton,
+  );
+  document.body.append(elements.container, elements.modal);
   return {
     image: elements.image,
     hint: elements.hint,
     wordWrapper: elements.wordWrapper,
     keyboardWrapper: elements.keyboardWrapper,
     guessesCounter: elements.guessesCounter,
+    modal: {
+      modal: elements.modal,
+      button: elements.modalButton,
+      text: elements.modalText,
+      word: elements.secretWord,
+    },
   };
 }

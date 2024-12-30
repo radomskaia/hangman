@@ -1,62 +1,43 @@
 
 .modal {
-    border-radius: var(--border-radius);
-    background: var(--content_background);
-    transition: all 0.2s ease-in-out;
-    opacity: 0;
-    border: none;
-    z-index: 999;
-}
-
-.content-wrapper {
-    max-width: 400px;
+  border-radius: var(--border-radius);
+  background: var(--content-background);
+  transition: all 0.2s ease-in-out;
+  opacity: 0;
+  border: none;
+  /* z-index: 999; */
+  max-width: 400px;
+  padding: 30px;
 }
 
 .modal::backdrop {
-    background: var(--overlay);
-    padding: 8px;
-    transition: all 0.3s ease-in-out;
+  background: var(--overlay);
+  padding: 8px;
+  transition: all 0.3s ease-in-out;
 }
 
 .modal-text {
-    padding: 20px;
-    color: var(--dark);
-    background-color: var(--static_white);
-    border-radius: var(--border-radius);
-}
-
-.modal-info {
-    margin-bottom: 20px;
-}
-
-.modal-bg {
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-}
-
-.modal_btn {
-    position: absolute;
-    border-radius: 0;
-    top: 12px;
-    right: 12px;
+  padding: 20px;
+  color: var(--dark);
+  background-color: var(--static-white);
+  border-radius: var(--border-radius);
 }
 
 .modal[open] {
-    opacity: 1;
+  opacity: 1;
 }
 
 html:has(.modal[open]) {
-        overflow-y: hidden;
-    }
+  overflow-y: hidden;
+}
 
 @starting-style {
-    .modal[open] {
-        opacity: 0;
-    }
+  .modal[open] {
+    opacity: 0;
+  }
 
-    .modal[open]::backdrop {
+  .modal[open]::backdrop {
     background: transparent;
-}
+  }
 }
 

@@ -19,6 +19,15 @@ function updateCounter(guessesCounterElement, imageElement) {
   }
 }
 
+function checkGameOver(wordLength, modal, word) {
+  if (!(counter === MAX_ATTEMPTS) && wordLength) {
+    return;
+  }
+  modal.text.textContent = wordLength ? 'GAME OVER' : 'YOU WIN';
+  modal.word.textContent = word.join('').toUpperCase();
+  modal.modal.showModal();
+}
+
 export function guessLetter(word, elements, char, charButton) {
   const indexes = findAllIndexes(word, char);
   if (!indexes) {
@@ -31,4 +40,5 @@ export function guessLetter(word, elements, char, charButton) {
     });
   }
   charButton.disabled = true;
+  checkGameOver(Object.keys(elements.wordLetters).length, elements.modal, word);
 }
