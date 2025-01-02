@@ -1,8 +1,12 @@
-import questions from '../questions.json';
+import data from '../questions.json';
 import { createDOMElement } from './utils.js';
 export const gameState = { secretWord: '', isEnd: false, counter: 0 };
 
-questions.sort(() => Math.random() - 0.5);
+let questions = sortData(data);
+
+function sortData(data) {
+  return [...data.sort(() => Math.random() - 0.5)];
+}
 
 function renderLetter(charIndex) {
   return createDOMElement({
@@ -17,7 +21,7 @@ function renderLetter(charIndex) {
 
 export function startGame(elements) {
   if (questions.length === 0) {
-    window.location.reload();
+    questions = sortData(data);
   }
   const question = questions.pop();
   gameState.secretWord = question.word.split('');
