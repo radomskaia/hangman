@@ -15,7 +15,7 @@ function updateCounter(guessesCounterElement, imageElement) {
   gameState.counter++;
   if (gameState.counter <= MAX_ATTEMPTS) {
     guessesCounterElement.textContent = gameState.counter;
-    imageElement.src = `./src/images/gallows-${gameState.counter}.png`;
+    imageElement.src = `./images/gallows-${gameState.counter}.png`;
   }
 }
 

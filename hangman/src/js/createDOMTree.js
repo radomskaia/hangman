@@ -24,7 +24,7 @@ export function createDOMTree() {
     classList: ['image'],
     attributes: {
       alt: 'gallows',
-      src: './src/images/empty-gallows.png',
+      src: './images/empty-gallows.png',
     },
   });
   elements.imageWrapper.append(elements.image);

@@ -1,7 +1,7 @@
 import { gameState, startGame } from './startGame.js';
 
 export function resetGame(elements) {
-  elements.image.src = './src/images/empty-gallows.png';
+  elements.image.src = './images/empty-gallows.png';
   elements.guessesCounter.textContent = '0';
   elements.wordWrapper.innerHTML = '';
   Object.values(elements.keyboardKeys).forEach((button) => {
