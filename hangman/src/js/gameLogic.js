@@ -30,6 +30,7 @@ function checkGameOver(wordLength, modal) {
 }
 
 export function gameLogic(elements, char, charButton) {
+  charButton.disabled = true;
   const indexes = findAllIndexes(char);
   if (!indexes) {
     updateCounter(elements.guessesCounter, elements.image);
@@ -40,6 +41,5 @@ export function gameLogic(elements, char, charButton) {
       delete elements.wordLetters[index];
     });
   }
-  charButton.disabled = true;
   checkGameOver(Object.keys(elements.wordLetters).length, elements.modal);
 }

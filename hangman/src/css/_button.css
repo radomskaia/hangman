@@ -31,7 +31,7 @@
   background-color: var(--dark);
 }
 
-@media (hover: hover) {
+@media (hover: hover) and (pointer: fine) {
   .button-keyboard:hover {
     background-color: var(--primary-alpha);
   }

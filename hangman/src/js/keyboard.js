@@ -13,9 +13,9 @@ function clickHandler(key, elements, char) {
     return;
   }
   key.classList.add('button-keyboard-active');
+  gameLogic(elements, char, key);
   setTimeout(() => {
     key.classList.remove('button-keyboard-active');
-    gameLogic(elements, char, key);
   }, DELAY_TIME);
 }
 
