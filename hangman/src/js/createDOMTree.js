@@ -8,6 +8,7 @@ import { resetGame } from './resetGame.js';
  */
 export function createDOMTree() {
   const allElements = {};
+
   allElements.container = createDOMElement({
     classList: ['container', 'flex', 'flex_gap-48'],
   });
@@ -22,10 +23,12 @@ export function createDOMTree() {
   allElements.wrapperRight = createDOMElement({
     classList: ['flex', 'flex--column', 'flex_gap-20', 'flex--align-center'],
   });
+
   allElements.container.append(
     allElements.wrapperLeft,
     allElements.wrapperRight,
   );
+
   allElements.imageWrapper = createDOMElement();
   allElements.image = createDOMElement({
     tagName: 'img',
@@ -45,6 +48,7 @@ export function createDOMTree() {
     allElements.imageWrapper,
     allElements.headerPrimary,
   );
+
   allElements.wordWrapper = createDOMElement({
     tagName: 'ul',
     classList: ['flex', 'flex_gap-10'],
@@ -84,6 +88,7 @@ export function createDOMTree() {
     allElements.incorrectWrapper,
     allElements.keyboardWrapper,
   );
+
   allElements.modal = createDOMElement({
     tagName: 'dialog',
     classList: [
@@ -115,6 +120,7 @@ export function createDOMTree() {
     allElements.modalText2,
     allElements.modalButton,
   );
+
   document.body.append(allElements.container, allElements.modal);
 
   const usedElements = {

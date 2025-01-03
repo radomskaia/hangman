@@ -13,6 +13,7 @@ function clickHandler(key, elements, char) {
   if (key.disabled) {
     return;
   }
+  key.disabled = true;
   key.classList.add('button-keyboard-active');
   gameLogic(elements, char, key);
   setTimeout(() => {

@@ -42,7 +42,6 @@ function checkGameOver(wordLength, modal) {
  * @param {HTMLButtonElement} charButton - The button corresponding to the entered character.
  */
 export function gameLogic(elements, char, charButton) {
-  charButton.disabled = true;
   const indexes = findAllIndexes(char);
   if (!indexes) {
     updateCounter(elements.guessesCounter, elements.image);
