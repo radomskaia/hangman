@@ -2,11 +2,11 @@ import { createDOMElement } from './utils.js';
 import { resetGame } from './resetGame.js';
 
 export function createDOMTree() {
-  const elements = {};
-  elements.container = createDOMElement({
+  const allElements = {};
+  allElements.container = createDOMElement({
     classList: ['container', 'flex', 'flex_gap-48'],
   });
-  elements.wrapperLeft = createDOMElement({
+  allElements.wrapperLeft = createDOMElement({
     classList: [
       'flex',
       'flex--column',
@@ -14,12 +14,15 @@ export function createDOMTree() {
       'flex--align-justify-center',
     ],
   });
-  elements.wrapperRight = createDOMElement({
+  allElements.wrapperRight = createDOMElement({
     classList: ['flex', 'flex--column', 'flex_gap-20', 'flex--align-center'],
   });
-  elements.container.append(elements.wrapperLeft, elements.wrapperRight);
-  elements.imageWrapper = createDOMElement();
-  elements.image = createDOMElement({
+  allElements.container.append(
+    allElements.wrapperLeft,
+    allElements.wrapperRight,
+  );
+  allElements.imageWrapper = createDOMElement();
+  allElements.image = createDOMElement({
     tagName: 'img',
     classList: ['image'],
     attributes: {
@@ -27,53 +30,56 @@ export function createDOMTree() {
       src: './images/empty-gallows.png',
     },
   });
-  elements.imageWrapper.append(elements.image);
-  elements.headerPrimary = createDOMElement({
+  allElements.imageWrapper.append(allElements.image);
+  allElements.headerPrimary = createDOMElement({
     tagName: 'h1',
     textContent: 'hangman game',
     classList: ['header-primary'],
   });
-  elements.wrapperLeft.append(elements.imageWrapper, elements.headerPrimary);
-  elements.wordWrapper = createDOMElement({
+  allElements.wrapperLeft.append(
+    allElements.imageWrapper,
+    allElements.headerPrimary,
+  );
+  allElements.wordWrapper = createDOMElement({
     tagName: 'ul',
     classList: ['flex', 'flex_gap-10'],
   });
-  elements.hintWrapper = createDOMElement({
+  allElements.hintWrapper = createDOMElement({
     tagName: 'p',
     textContent: 'Hint: ',
   });
-  elements.hint = createDOMElement({
+  allElements.hint = createDOMElement({
     tagName: 'strong',
   });
-  elements.hintWrapper.append(elements.hint);
-  elements.incorrectWrapper = createDOMElement({
+  allElements.hintWrapper.append(allElements.hint);
+  allElements.incorrectWrapper = createDOMElement({
     tagName: 'p',
     textContent: 'Incorrect guesses: ',
   });
-  elements.guessesCounter = createDOMElement({
+  allElements.guessesCounter = createDOMElement({
     tagName: 'span',
     textContent: '0',
     classList: ['counter-text'],
   });
-  elements.incorrectText = createDOMElement({
+  allElements.incorrectText = createDOMElement({
     tagName: 'span',
     textContent: ' / 6',
     classList: ['counter-text'],
   });
-  elements.incorrectWrapper.append(
-    elements.guessesCounter,
-    elements.incorrectText,
+  allElements.incorrectWrapper.append(
+    allElements.guessesCounter,
+    allElements.incorrectText,
   );
-  elements.keyboardWrapper = createDOMElement({
+  allElements.keyboardWrapper = createDOMElement({
     classList: ['flex', 'flex--wrap', 'flex_gap-10'],
   });
-  elements.wrapperRight.append(
-    elements.wordWrapper,
-    elements.hintWrapper,
-    elements.incorrectWrapper,
-    elements.keyboardWrapper,
+  allElements.wrapperRight.append(
+    allElements.wordWrapper,
+    allElements.hintWrapper,
+    allElements.incorrectWrapper,
+    allElements.keyboardWrapper,
   );
-  elements.modal = createDOMElement({
+  allElements.modal = createDOMElement({
     tagName: 'dialog',
     classList: [
       'modal',
@@ -83,43 +89,43 @@ export function createDOMTree() {
       'flex_gap-20',
     ],
   });
-  elements.modalButton = createDOMElement({
+  allElements.modalButton = createDOMElement({
     tagName: 'button',
     classList: ['button', 'modal-button'],
     textContent: 'Play again',
   });
-  elements.modalText = createDOMElement({
+  allElements.modalText = createDOMElement({
     tagName: 'p',
   });
-  elements.modalText2 = createDOMElement({
+  allElements.modalText2 = createDOMElement({
     tagName: 'p',
     textContent: 'Secret word: ',
   });
-  elements.secretWord = createDOMElement({
+  allElements.secretWord = createDOMElement({
     tagName: 'strong',
   });
-  elements.modalText2.append(elements.secretWord);
-  elements.modal.append(
-    elements.modalText,
-    elements.modalText2,
-    elements.modalButton,
+  allElements.modalText2.append(allElements.secretWord);
+  allElements.modal.append(
+    allElements.modalText,
+    allElements.modalText2,
+    allElements.modalButton,
   );
-  document.body.append(elements.container, elements.modal);
+  document.body.append(allElements.container, allElements.modal);
 
   const usedElements = {
-    image: elements.image,
-    hint: elements.hint,
-    wordWrapper: elements.wordWrapper,
-    keyboardWrapper: elements.keyboardWrapper,
-    guessesCounter: elements.guessesCounter,
+    image: allElements.image,
+    hint: allElements.hint,
+    wordWrapper: allElements.wordWrapper,
+    keyboardWrapper: allElements.keyboardWrapper,
+    guessesCounter: allElements.guessesCounter,
     modal: {
-      modal: elements.modal,
-      text: elements.modalText,
-      word: elements.secretWord,
+      modal: allElements.modal,
+      text: allElements.modalText,
+      word: allElements.secretWord,
     },
   };
 
-  elements.modalButton.addEventListener('click', () => {
+  allElements.modalButton.addEventListener('click', () => {
     resetGame(usedElements);
     usedElements.modal.modal.close();
   });

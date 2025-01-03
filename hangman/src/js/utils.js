@@ -1,8 +1,3 @@
-// export const TABLET_WIDTH = 768;
-export const DELAY_TIME = 300;
-
-// export const mediaQuery = window.matchMedia(`(max-width: ${TABLET_WIDTH}px)`);
-
 export function createDOMElement({
   tagName = 'div',
   classList = [],

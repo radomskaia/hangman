@@ -1,7 +1,8 @@
-import { createDOMElement, DELAY_TIME } from './utils.js';
+import { createDOMElement } from './utils.js';
 import { gameLogic } from './gameLogic.js';
 import { gameState } from './startGame.js';
 
+const DELAY_TIME = 300;
 const RUSSIAN_LAYOUT = { firstChar: 'а', lastChar: 'я' };
 const ENGLISH_LAYOUT = {
   firstCharCode: 'a'.charCodeAt(0),

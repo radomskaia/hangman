@@ -1,9 +1,13 @@
-import { gameState } from './startGame.js';
+import { gameState, getSecretWord } from './startGame.js';
 const MAX_ATTEMPTS = 6;
+const GAME_MESSAGES = {
+  WIN: 'YOU WIN',
+  LOSE: 'GAME OVER',
+};
 
 function findAllIndexes(char) {
   const indexes = [];
-  gameState.secretWord.forEach((letter, index) => {
+  getSecretWord().forEach((letter, index) => {
     if (letter === char) {
       indexes.push(index);
     }
@@ -24,8 +28,8 @@ function checkGameOver(wordLength, modal) {
     return;
   }
   gameState.isEnd = true;
-  modal.text.textContent = wordLength ? 'GAME OVER' : 'YOU WIN';
-  modal.word.textContent = gameState.secretWord.join('').toUpperCase();
+  modal.text.textContent = wordLength ? GAME_MESSAGES.LOSE : GAME_MESSAGES.WIN;
+  modal.word.textContent = getSecretWord().join('').toUpperCase();
   modal.modal.showModal();
 }
 
@@ -37,7 +41,7 @@ export function gameLogic(elements, char, charButton) {
     charButton.disabled = true;
   } else {
     indexes.forEach((index) => {
-      elements.wordLetters[index].textContent = gameState.secretWord[index];
+      elements.wordLetters[index].textContent = getSecretWord()[index];
       delete elements.wordLetters[index];
     });
   }
