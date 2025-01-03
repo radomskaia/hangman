@@ -56,6 +56,10 @@ function renderKey(charCode, elements) {
   return key;
 }
 
+/**
+ * Renders the keyboard and adds event listeners for each key.
+ * @param {Object} elements - An object containing the DOM elements used in the game.
+ */
 export function keyboard(elements) {
   elements.keyboardKeys = {};
   for (

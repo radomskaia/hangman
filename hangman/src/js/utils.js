@@ -1,3 +1,12 @@
+/**
+ * Creates and returns a new DOM element with the specified properties.
+ * @param {Object} options - The options for creating the DOM element.
+ * @param {string} [options.tagName='div'] - The tag name of the element.
+ * @param {string[]} [options.classList=[]] - A list of CSS classes to apply to the element.
+ * @param {string} [options.textContent=''] - The text content of the element.
+ * @param {Object} [options.attributes={}] - A map of attributes to set on the element.
+ * @returns {HTMLElement} - The created DOM element.
+ */
 export function createDOMElement({
   tagName = 'div',
   classList = [],

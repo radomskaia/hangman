@@ -1,4 +1,5 @@
 import { gameState, getSecretWord } from './startGame.js';
+
 const MAX_ATTEMPTS = 6;
 const GAME_MESSAGES = {
   WIN: 'YOU WIN',
@@ -33,6 +34,13 @@ function checkGameOver(wordLength, modal) {
   modal.modal.showModal();
 }
 
+/**
+ * Handles the core game logic: checks the entered character, updates the game state,
+ * and ends the game if necessary.
+ * @param {Object} elements - An object containing the DOM elements used in the game.
+ * @param {string} char - The entered character.
+ * @param {HTMLButtonElement} charButton - The button corresponding to the entered character.
+ */
 export function gameLogic(elements, char, charButton) {
   charButton.disabled = true;
   const indexes = findAllIndexes(char);

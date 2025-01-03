@@ -1,6 +1,11 @@
 import { createDOMElement } from './utils.js';
 import { resetGame } from './resetGame.js';
 
+/**
+ * Creates and appends the DOM tree for the game interface.
+ * Initializes event listeners and returns references to the essential elements.
+ * @returns {Object} - An object containing references to the created DOM elements.
+ */
 export function createDOMTree() {
   const allElements = {};
   allElements.container = createDOMElement({
