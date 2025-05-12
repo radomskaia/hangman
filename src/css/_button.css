@@ -36,17 +36,22 @@
     background-color: var(--primary-alpha);
   }
 
+  .button-keyboard:active {
+    transform: translateY(4px);
+    background-color: var(--dark);
+  }
+
   .button-keyboard:disabled:hover {
     background-color: var(--dark);
   }
+
+  .button-keyboard:disabled:active {
+    transform: translateY(0);
+  }
+
 }
 
-.button-keyboard:active,
 .button-keyboard-active {
   transform: translateY(4px);
   background-color: var(--dark);
-}
-
-.button-keyboard:disabled:active {
-  transform: translateY(0);
 }
